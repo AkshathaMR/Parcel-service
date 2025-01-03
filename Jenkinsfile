@@ -37,11 +37,7 @@ pipeline {
             }
         }
 
-        stage('Copy Artifact to apache') {
-            steps {
-                sh 'cp target/simple-parcel-service-app-1.0-SNAPSHOT.jar /opt/tomcat/webapps/'
-            }
-        }
+       
         
         stage('Upload Artifact') {
             steps {
