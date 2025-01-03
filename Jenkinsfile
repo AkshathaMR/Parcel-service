@@ -43,7 +43,13 @@ pipeline {
                 archiveArtifacts artifacts: 'target/simple-parcel-service-app-1.0-SNAPSHOT.jar', allowEmptyArchive: true
             }
         }
-
+ stage('Deploy WAR') {
+    steps {
+        sh '''
+        scp -o StrictHostKeyChecking=no //opt/jenkins/workspace/parcel-MBjob_feature-1/target/simple-parcel-service-app-1.0-SNAPSHOT.jar root@172.31.45.190:/opt/apache-tomcat-10.1.34/webapps/
+        '''
+    }
+}
         stage('Run Application') {
             steps {
                 echo 'Running Spring Boot application...'
